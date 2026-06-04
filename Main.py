@@ -15,7 +15,8 @@ def loadCSV(filename):
         return array
 
 
-dataArray = loadCSV("datas/small.csv")
+dataArray = loadCSV("datas/isere.csv")
 # tri_insertion(dataArray)
 # tri_selection_sort(dataArray)
-buble_sort(dataArray)
+# buble_sort(dataArray)
+# tri_shell(dataArray)

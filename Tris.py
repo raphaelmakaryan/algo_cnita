@@ -37,3 +37,20 @@ def buble_sort(array):
                 permutation = True
         passage = passage + 1
     print(array)
+
+
+def tri_insertion_shell(array, gap, debut):
+    for i in range(gap + debut, len(array)):
+        valeur = array[i]
+        j = i
+        while j > gap - 1 and (array[j - gap] > valeur):
+            array[j], array[j - gap] = array[j - gap], array[j]
+            j = j - gap
+            array[j] = valeur
+
+
+def tri_shell(array):
+    for gap in range(0, len(array) - 1):
+        for debut in range(0, gap - 1):
+            tri_insertion_shell(array, gap, debut)
+    print(array)
