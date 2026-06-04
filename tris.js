@@ -77,9 +77,32 @@ function bubble_sort(array) {
 }
 
 
+function tri_insertion_shell(array, gap, debut) {
+    for (let index = gap + debut; index < array.length; index++) {
+        let valeur = array[index], j = index
+        while (j > gap - 1 && (array[j - gap] > valeur)) {
+            array[j] = array[j - gap]
+            array[j - gap] = array[j]
+            j = j - gap
+            array[j] = valeur
+        }
+    }
+}
+
+function tri_shell(array) {
+    for (let gap = 0; gap < (array.length - 1); gap++) {
+        for (let debut = 0; debut < (gap - 1); debut++) {
+            tri_insertion_shell(array, gap, debut)
+        }
+    }
+    console.log(array);
+    console.log("Fin de tri_shell");
+}
+
 const dataArray = loadCSV("./datas/small.csv")
 /*
 tri_insertion(dataArray)
 tri_selection_sort(dataArray)
-*/
 bubble_sort(dataArray)
+tri_shell(dataArray)
+*/
