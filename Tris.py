@@ -1,6 +1,3 @@
-from itertools import permutations
-
-
 def tri_insertion(array):
     n = len(array)
     for i in range(1, n):
