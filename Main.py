@@ -16,5 +16,6 @@ def loadCSV(filename):
 
 
 dataArray = loadCSV("datas/small.csv")
-#tri_insertion(dataArray)
-tri_selection_sort(dataArray)
+# tri_insertion(dataArray)
+# tri_selection_sort(dataArray)
+buble_sort(dataArray)

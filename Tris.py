@@ -1,3 +1,6 @@
+from itertools import permutations
+
+
 def tri_insertion(array):
     n = len(array)
     for i in range(1, n):
@@ -19,4 +22,18 @@ def tri_selection_sort(array):
                 array_tempo = array[i]
                 array[i] = array[min]
                 array[min] = array_tempo
+    print(array)
+
+
+def buble_sort(array):
+    passage = 0
+    permutation = True
+    while permutation:
+        permutation = False
+        for i in range(0, (len(array) - 1) - passage):
+            if array[i] > array[i + 1]:
+                array[i], array[i + 1] = \
+                    array[i + 1], array[i]
+                permutation = True
+        passage = passage + 1
     print(array)
