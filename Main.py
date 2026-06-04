@@ -15,5 +15,6 @@ def loadCSV(filename):
         return array
 
 
-dataArray = loadCSV("datas/fr.csv")
-tri_insertion(dataArray)
+dataArray = loadCSV("datas/small.csv")
+#tri_insertion(dataArray)
+tri_selection_sort(dataArray)
