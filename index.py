@@ -1,8 +1,9 @@
+import csv
 import math
 
 import folium
 
-m = folium.Map(location=(45.5236, -122.6750))
+m = folium.Map(location=(45.084021528251469, 5.589844330679625))
 allMarkers = [
     # Position, Texte en hover, Nom au clique, icone
     [[45.3288, -121.6625], "Click moi dessus la", "Mt. Hood Meadows", "cloud"],
@@ -23,8 +24,8 @@ def createMarkers(allMarkers, m):
             popup=marker[2],
             icon=folium.Icon(icon=marker[3]),
         ).add_to(m)
-    createLine(trail_coordinates, m)
-    have_distance(allCoordinates)
+    # createLine(trail_coordinates, m)
+    # have_distance(allCoordinates)
 
 
 def createLine(allMarkersCoordinates, m):
@@ -43,11 +44,21 @@ def have_distance(allMarkersCoordinates):
     print(f"Distance entre les deux points : {total:.2f} km")
 
 
-def main():
-    createMarkers(allMarkers, m)
-    m.save("index.html")
-    print("Fin de la création de la map.")
+def loadCSV():
+    array = []
+    with open("70villes.csv", newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f, fieldnames=["latitude", "longitude"])
+        next(reader)
+        index = 0
+        for row in reader:
+            array.append([[float(row["latitude"]), float(row["longitude"])], "Click moi dessus aller", f"Ville {index}",
+                          "cloud"])
+            index += 1
+
+        return array
 
 
 if __name__ == "__main__":
-    main()
+    createMarkers(loadCSV(), m)
+    m.save("index.html")
+    print("Fin de la création de la map.")
