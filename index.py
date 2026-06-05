@@ -4,11 +4,6 @@ import math
 import folium
 
 m = folium.Map(location=(45.084021528251469, 5.589844330679625))
-allMarkers = [
-    # Position, Texte en hover, Nom au clique, icone
-    [[45.3288, -121.6625], "Click moi dessus la", "Mt. Hood Meadows", "cloud"],
-    [[45.3311, -121.7113], "Click moi dessus aller", "Timberline Lodge", "cloud"]
-]
 
 
 def createMarkers(allMarkers, m):
@@ -51,6 +46,7 @@ def loadCSV():
         next(reader)
         index = 0
         for row in reader:
+            # Position, Texte en hover, Nom au clique, icone
             array.append([[float(row["latitude"]), float(row["longitude"])], "Click moi dessus aller", f"Ville {index}",
                           "cloud"])
             index += 1
