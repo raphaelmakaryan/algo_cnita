@@ -3,7 +3,8 @@ import math
 import time 
 import folium
 
-m = folium.Map(location=(45.084021528251469, 5.589844330679625))
+#m = folium.Map(location=(45.084021528251469, 5.589844330679625))
+m = folium.Map(location=(45.223118073306978, 5.216796220745891))
 trajetTest = [
     [45.084021528251469, 5.589844330679625],
     [45.439716202672571, 5.504584172740579],
@@ -180,6 +181,6 @@ if __name__ == "__main__":
     allTrajet = allTrajetOfCSV()
     allMarkers = arrayForMarkers(allTrajet)
     createMarkers(allMarkers, m)
-    have_trajet("glouton", allTrajet, m)
+    have_trajet("2-opt", allTrajet, m)
     m.save("index.html")
     print("Fin de la création de la map.")
