@@ -2,7 +2,6 @@ import csv
 import math
 import time
 from dataclasses import dataclass
-
 import folium
 
 
@@ -66,13 +65,20 @@ def distance_totale(route: list[int], reseau: ReseauVilles, closed=True) -> floa
     return total
 
 
-def charger_villes() -> list[Ville]:
+def charger_villes():
+    villes = []
     with open("70villes.csv", newline="", encoding="utf-8") as fichier:
         reader = csv.DictReader(fichier)
-        return [
-            Ville(index, f"Ville {index}", float(row["latitude"]), float(row["longitude"]))
-            for index, row in enumerate(reader)
-        ]
+        for index, row in enumerate(reader):
+            villes.append(
+                Ville(
+                    index=index,
+                    nom=f"Ville {index}",
+                    latitude=float(row["latitude"]),
+                    longitude=float(row["longitude"]),
+                )
+            )
+    return villes
 
 
 def two_opt_function(trajet: list[int], villes: list[Ville], reseau: ReseauVilles, map_view):
